@@ -1,0 +1,26 @@
+.items {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+img {
+  width: 50px;
+}
+
+.card {
+  border: solid 1px black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+  padding: 10px;
+}
+
+.description {
+  width: 350px;
+}
+
+.title {
+  width: 350px;
+}
