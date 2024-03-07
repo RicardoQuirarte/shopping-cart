@@ -2,16 +2,38 @@ import { useState, useEffect } from "react";
 import "/src/items.css";
 
 function Items() {
-  const [data, setData] = useState("hellooooooo");
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((json) => setData(json));
+    const getProducts = async () => {
+      const response = await fetch(`https://fakestoreapi.com/products`);
+      const products = await response.json();
+      setData(products);
+      setLoading(false);
+    };
+    getProducts();
+    console.log(data);
   }, []);
 
-  console.log(data);
+  // useEffect(() => {
+  //   fetch("https://fakestoreapi.com/products", { mode: "cors" })
+  //     .then((response) => {
+  //       if (response.status >= 400) {
+  //         throw new Error("server error");
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((response) => setLoading(response))
+  //     .catch((error) => setError(error))
+  //     .finally(() => setLoading(false));
+  //   console.log(data);
+  // }, []);
+
+  // if (error) return <p>A network error was encountered</p>;
+
+  if (loading) return <p>Loading...</p>;
 
   return (
     <div className="items">
