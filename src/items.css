@@ -1,3 +1,7 @@
+body {
+  background: ;
+}
+
 .items {
   display: flex;
   align-items: center;
@@ -15,6 +19,7 @@ img {
   flex-direction: column;
   margin: 20px;
   padding: 10px;
+  background-color: white;
 }
 
 .description {
