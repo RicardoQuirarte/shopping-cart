@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "/src/items.css";
 import NavBar from "./NavBar";
 
@@ -7,6 +6,8 @@ function Items() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [quantity, setQuantity] = useState(1);
+  const [car, setCar] = useState(0);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -18,12 +19,31 @@ function Items() {
       setLoading(false);
     };
     getProducts();
-    console.log(data);
   }, []);
+
+  function minus() {
+    if (quantity < 1) return;
+    const newQuantity = quantity - 1;
+    setQuantity(newQuantity);
+  }
+
+  function plus() {
+    const newQuantity = quantity + 1;
+    setQuantity(newQuantity);
+  }
+
+  function handleInput(e) {
+    setQuantity(Number(e.target.value));
+  }
+
+  function addToCar() {
+    const newCar = car + quantity;
+    setCar(newCar);
+  }
 
   return (
     <>
-      <NavBar />
+      <NavBar addToCar={car} />
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -34,7 +54,27 @@ function Items() {
               <img src={item.image} alt={item.title} />
               <p>Price: {`$${item.price}`}</p>
               <p className="description">{item.description}</p>
-              <p>Category: {item.category}</p>
+              <button onClick={addToCar}>Add to car</button>
+              <div className="add-to-car">
+                <img
+                  className="minus-plus"
+                  src="./src/assets/minus.svg"
+                  alt="minus"
+                  onClick={minus}
+                />
+                <input
+                  type="text"
+                  id="amount"
+                  value={quantity}
+                  onChange={handleInput}
+                />
+                <img
+                  className="minus-plus"
+                  src="./src/assets/plus.svg"
+                  alt="plus"
+                  onClick={plus}
+                />
+              </div>
             </div>
           ))}
         </div>
