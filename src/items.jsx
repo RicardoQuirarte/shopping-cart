@@ -6,7 +6,7 @@ function Items() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState([]);
   const [car, setCar] = useState(0);
 
   useEffect(() => {
@@ -21,9 +21,11 @@ function Items() {
     getProducts();
   }, []);
 
-  function minus() {
-    if (quantity < 1) return;
+  function minus(id) {
+    // if (quantity < 1) return;
     const newQuantity = quantity - 1;
+
+    const updatedQuantity = { id: quantity };
     setQuantity(newQuantity);
   }
 
@@ -32,8 +34,12 @@ function Items() {
     setQuantity(newQuantity);
   }
 
-  function handleInput(e) {
-    setQuantity(Number(e.target.value));
+  function handleInput(e, index) {
+    const newValue = [...quantity];
+    newValue[index] = Number(e.target.value);
+    setQuantity(newValue);
+
+    // setQuantity(Number(e.target.value));
   }
 
   function addToCar() {
@@ -48,7 +54,7 @@ function Items() {
         <p>Loading...</p>
       ) : (
         <div className="items">
-          {data.map((item) => (
+          {data.map((item, index) => (
             <div className="card" key={item.id}>
               <p className="title">{item.title}</p>
               <img src={item.image} alt={item.title} />
@@ -60,13 +66,13 @@ function Items() {
                   className="minus-plus"
                   src="./src/assets/minus.svg"
                   alt="minus"
-                  onClick={minus}
+                  onClick={() => minus(item.id)}
                 />
                 <input
                   type="text"
                   id="amount"
-                  value={quantity}
-                  onChange={handleInput}
+                  value={1}
+                  onChange={() => handleInput(index)}
                 />
                 <img
                   className="minus-plus"
