@@ -9,6 +9,9 @@ function Items() {
   const [quantity, setQuantity] = useState([]);
   const [car, setCar] = useState(0);
 
+  console.log(data);
+  console.log(quantity);
+
   useEffect(() => {
     const getProducts = async () => {
       const response = await fetch(
@@ -16,13 +19,19 @@ function Items() {
       );
       const products = await response.json();
       setData(products);
+      setQuantity(
+        products.map((elem) => ({
+          id: elem.id,
+          quantity: 0,
+        }))
+      );
       setLoading(false);
     };
     getProducts();
   }, []);
 
   function minus(id) {
-    // if (quantity < 1) return;
+    if (Object.values(quantity.indexOf)) return;
     const newQuantity = quantity - 1;
 
     const updatedQuantity = { id: quantity };
