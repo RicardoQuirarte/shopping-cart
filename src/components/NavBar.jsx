@@ -1,4 +1,4 @@
-import "/src/navBar.css";
+import "/src/App.css";
 import { Link } from "react-router-dom";
 
 function NavBar({ addToCar }) {
@@ -7,8 +7,8 @@ function NavBar({ addToCar }) {
       <nav>
         <p>Future Store</p>
         <Link to="/">Home</Link>
-        <Link to="items">Shop</Link>
-        <Link to="shopppingCart">Cart: {addToCar}</Link>
+        <Link to="/items">Shop</Link>
+        <Link to="/shopppingCart">Cart: {addToCar}</Link>
       </nav>
     </>
   );

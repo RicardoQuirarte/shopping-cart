@@ -1,10 +1,10 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Items from "./Items.jsx";
-import Home from "./Home.jsx";
-import ErrorPage from "./ErrorPage.jsx";
-import ShoppingCart from "./ShoppingCart.jsx";
+import Items from "../pages/Items.jsx";
+import Home from "../pages/Home.jsx";
+import ErrorPage from "../pages/ErrorPage.jsx";
+import ShoppingCart from "../pages/ShoppingCart.jsx";
 
-const Router = () => {
+const Routerr = () => {
   const router = createBrowserRouter([
     {
       path: "/",
@@ -12,11 +12,11 @@ const Router = () => {
       errorElement: <ErrorPage />,
     },
     {
-      path: "items",
+      path: "/items",
       element: <Items />,
     },
     {
-      path: "shopppingCart",
+      path: "/shopppingCart",
       element: <ShoppingCart />,
     },
   ]);
@@ -24,4 +24,4 @@ const Router = () => {
   return <RouterProvider router={router} />;
 };
 
-export default Router;
+export default Routerr;

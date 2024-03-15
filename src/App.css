@@ -5,32 +5,46 @@
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+html {
+  background: url(./assets/shopping.jpg) no-repeat center center fixed;
+  background-size: cover;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+img {
+  width: 75px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+img:hover {
+  background-color: yellow;
+  cursor: pointer;
+}
+
+input {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+}
+
+nav {
+  background-color: white;
+  height: 100px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-items: center;
+  color: black;
+}
+
+a,
+p {
+  text-decoration: none;
+  color: black;
+  font-size: 1.2rem;
+}
+
+a:hover {
+  background-color: black;
+  color: white;
 }
 
 .card {
@@ -40,3 +54,67 @@
 .read-the-docs {
   color: #888;
 }
+
+.home-text {
+  color: white;
+  display: flex;
+  width: 50vw;
+  text-align: center;
+  justify-content: center;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 125px;
+  align-items: center;
+  background-color: black;
+  width: 50vw;
+  background-color: rgb(0, 0, 0, 0.7);
+  padding: 20px;
+}
+
+.dary {
+  display: flex;
+  justify-content: center;
+}
+
+.items {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.card {
+  border: solid 1px black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin: 20px;
+  padding: 20px;
+  background-color: white;
+}
+
+.description {
+  width: 350px;
+}
+
+.title {
+  width: 350px;
+}
+
+.add-to-car {
+  display: flex;
+  align-items: center;
+}
+
+.minus-plus {
+  width: 30px;
+  height: 30px;
+  background-color: aqua;
+  margin: 10px;
+}
+
+/* -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover; */
