@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import "/src/App.css";
-import NavBar from "../components/NavBar";
 
 function Items() {
   const [data, setData] = useState(null);
@@ -8,6 +7,7 @@ function Items() {
   const [error, setError] = useState(null);
   const [car, setCar] = useState(0);
   const [carItems, setCarItems] = useState();
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -51,13 +51,17 @@ function Items() {
     setCarItems((prev) => ({ ...prev, [id]: (prev[id] = e.target.value) }));
   }
 
-  function addToCar() {
+  const array = [];
+
+  function addToCar(item) {
     setCar(Object.values(carItems).reduce((a, b) => a + b, 0));
+    array.push(item);
+    setItems(array);
+    console.log(items);
   }
 
   return (
     <>
-      <NavBar addToCar={car} />
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -68,7 +72,7 @@ function Items() {
               <img src={item.image} alt={item.title} />
               <p>Price: {`$${item.price}`}</p>
               <p className="description">{item.description}</p>
-              <button onClick={addToCar}>Add to car</button>
+              <button onClick={() => addToCar(item)}>Add to car</button>
               <div className="add-to-car">
                 <img
                   className="minus-plus"

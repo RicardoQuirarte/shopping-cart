@@ -1,9 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Router from "./components/Router";
+import App from "./App";
+import NavBar from "./components/NavBar";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Router />
+    <App />
   </React.StrictMode>
 );

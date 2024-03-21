@@ -1,10 +1,8 @@
 import "/src/App.css";
-import NavBar from "../components/NavBar";
 
 function Home() {
   return (
     <>
-      <NavBar />
       <div className="dary">
         <div className="text-container">
           <h1 className="home-text">Welcome to the Shop of Tomorrow!</h1>
