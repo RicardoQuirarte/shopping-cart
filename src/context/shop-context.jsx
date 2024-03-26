@@ -42,20 +42,31 @@ export const ShopContextProvider = (props) => {
     console.log(carItems);
   }
 
-  function handleInput(id, e) {
-    // const newValue = [...quantity];
-    // newValue[index] = Number(e.target.value);
-    // setQuantity(newValue);
-
-    // setQuantity(Number(e.target.value));
-
-    setCarItems((prev) => ({ ...prev, [id]: (prev[id] = e.target.value) }));
+  function handleInput(newValue, id) {
+    setCarItems((prev) => ({ ...prev, [id]: newValue }));
   }
 
   function addToCar(item) {
-    setCar(Object.values(carItems).reduce((a, b) => a + b, 0));
-    setItems((items) => [...items, item]);
-    console.log(items);
+    setCar(car + carItems[item.id]);
+    if (carItems[item.id] > 0) {
+      setItems((items) => [...items, item]);
+    }
+  }
+
+  function removeFromCar(item) {
+    setCar(car - carItems[item.id]);
+    setItems(items.filter((i) => i.id !== item.id));
+  }
+
+  function total() {
+    let total = 0;
+    for (const item in carItems) {
+      if (carItems[item] > 0) {
+        let itemInfo = data.find((prodcut) => prodcut.id === Number(item));
+        total += carItems[item] * itemInfo.price;
+      }
+    }
+    return total;
   }
 
   const contextValue = {
@@ -68,6 +79,8 @@ export const ShopContextProvider = (props) => {
     plus,
     handleInput,
     addToCar,
+    removeFromCar,
+    total,
   };
 
   return (
@@ -92,3 +105,5 @@ export const ShopContextProvider = (props) => {
 // }, []);
 
 // if (error) return <p>A network error was encountered</p>;
+
+// setCar(Object.values(carItems).reduce((a, b) => a + b, 0));

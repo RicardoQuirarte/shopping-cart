@@ -6,7 +6,7 @@ function Items() {
     useContext(ShopContext);
 
   return (
-    <>
+    <div className="shop">
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -29,7 +29,7 @@ function Items() {
                   type="text"
                   id="amount"
                   value={carItems[item.id]}
-                  onChange={() => handleInput(item.id, e)}
+                  onChange={(e) => handleInput(Number(e.target.value), item.id)}
                 />
                 <img
                   className="minus-plus"
@@ -42,7 +42,7 @@ function Items() {
           ))}
         </div>
       )}
-    </>
+    </div>
   );
 }
 
