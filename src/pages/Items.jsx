@@ -8,7 +8,7 @@ function Items() {
   return (
     <div className="shop">
       {loading ? (
-        <p>Loading...</p>
+        <p className="loading">Loading...</p>
       ) : (
         <div className="items">
           {data.map((item) => (
@@ -27,7 +27,6 @@ function Items() {
                 />
                 <input
                   type="text"
-                  id="amount"
                   value={carItems[item.id]}
                   onChange={(e) => handleInput(Number(e.target.value), item.id)}
                 />

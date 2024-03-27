@@ -10,7 +10,7 @@ function ShoppingCart() {
   return (
     <div className="cart">
       {items.length === 0 ? (
-        <p className="empty">Yo ur shopping cart is empty</p>
+        <p className="empty">Your shopping cart is empty</p>
       ) : (
         <div className="items">
           {items.map((item) => (

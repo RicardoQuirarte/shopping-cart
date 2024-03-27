@@ -70,7 +70,6 @@ a:hover {
 .text-container {
   display: flex;
   flex-direction: column;
-  margin-top: 125px;
   align-items: center;
   background-color: black;
   width: 50vw;
@@ -78,9 +77,10 @@ a:hover {
   padding: 20px;
 }
 
-.dary {
+.home {
   display: flex;
   justify-content: center;
+  margin-top: 150px;
 }
 
 .items {
@@ -133,7 +133,8 @@ a:hover {
   padding: 10px;
 }
 
-.empty {
+.empty,
+.loading {
   font-size: 2rem;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.7);
