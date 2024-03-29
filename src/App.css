@@ -20,10 +20,6 @@ img {
   width: 75px;
 }
 
-img:hover {
-  cursor: pointer;
-}
-
 input {
   width: 25px;
   height: 25px;
@@ -112,7 +108,7 @@ button:hover {
   align-items: center;
   background-color: black;
   width: 50vw;
-  background-color: rgb(0, 0, 0, 0.7);
+  background-color: rgb(0, 0, 0, 0.2);
   padding: 20px;
 }
 
@@ -137,7 +133,8 @@ button:hover {
   padding: 15px;
   background-color: white;
   width: 300px;
-  height: 400px;
+  height: 370px;
+  border-radius: 10px;
 }
 
 .card-cart {
@@ -147,19 +144,25 @@ button:hover {
   padding: 20px;
   margin-top: 50px;
   margin: 25px;
+  border-radius: 10px;
 }
 
 .add-to-car {
   display: flex;
   align-items: center;
-  margin-top: 15px;
+  justify-content: center;
 }
 
 .minus-plus {
-  width: 30px;
-  height: 30px;
   margin: 10px;
   padding: 1px;
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.minus-plus:hover {
+  cursor: pointer;
 }
 
 .total {

@@ -6,7 +6,6 @@ export const ShopContextProvider = (props) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [carItems, setCarItems] = useState();
-  const [car, setCar] = useState(0);
   const [items, setItems] = useState([]);
   const [amount, setAmount] = useState();
 
@@ -59,7 +58,6 @@ export const ShopContextProvider = (props) => {
   }
 
   function addToCar(item) {
-    setCar(car + carItems[item.id]);
     setAmount((prev) => ({
       ...prev,
       [item.id]: prev[item.id] + carItems[item.id],
@@ -70,27 +68,28 @@ export const ShopContextProvider = (props) => {
   }
 
   function removeFromCar(item) {
-    setCar(car - amount[item.id]);
     setItems(items.filter((i) => i.id !== item.id));
     setAmount((prev) => ({ ...prev, [item.id]: 0 }));
   }
 
   function total() {
+    return Object.values(amount).reduce((a, b) => a + b);
+  }
+
+  function totalCar() {
     let total = 0;
     for (const item in amount) {
       if (amount[item] > 0) {
-        let itemInfo = data.find((product) => product.id === Number(item));
-        total += amount[item] * itemInfo.price;
+        total += amount[item];
       }
     }
-    return total.toFixed(2);
+    return total;
   }
 
   const contextValue = {
     data,
     loading,
     carItems,
-    car,
     items,
     amount,
     minus,
@@ -102,6 +101,7 @@ export const ShopContextProvider = (props) => {
     minusCart,
     plusCart,
     handleInputCart,
+    totalCar,
   };
 
   return (

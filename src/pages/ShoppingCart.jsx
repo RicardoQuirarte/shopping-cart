@@ -26,12 +26,9 @@ function ShoppingCart() {
               <p>Price: {`$${item.price}`}</p>
               <button onClick={() => removeFromCar(item)}>Remove</button>
               <div className="add-to-car">
-                <img
-                  className="minus-plus"
-                  src="./src/assets/minus.svg"
-                  alt="minus"
-                  onClick={() => minusCart(item.id)}
-                />
+                <p className="minus-plus" onClick={() => minusCart(item.id)}>
+                  -
+                </p>
                 <input
                   type="text"
                   id="amount"
@@ -40,12 +37,9 @@ function ShoppingCart() {
                     handleInputCart(Number(e.target.value), item.id)
                   }
                 />
-                <img
-                  className="minus-plus"
-                  src="./src/assets/plus.svg"
-                  alt="plus"
-                  onClick={() => plusCart(item.id)}
-                />
+                <p className="minus-plus" onClick={() => plusCart(item.id)}>
+                  +
+                </p>
               </div>
             </div>
           ))}

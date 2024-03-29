@@ -18,23 +18,17 @@ function Items() {
               <p>Price: {`$${item.price}`}</p>
               <button onClick={() => addToCar(item)}>Add to car</button>
               <div className="add-to-car">
-                <img
-                  className="minus-plus"
-                  src="./src/assets/minus.svg"
-                  alt="minus"
-                  onClick={() => minus(item.id)}
-                />
+                <p className="minus-plus" onClick={() => minus(item.id)}>
+                  -
+                </p>
                 <input
                   type="text"
                   value={carItems[item.id]}
                   onChange={(e) => handleInput(Number(e.target.value), item.id)}
                 />
-                <img
-                  className="minus-plus"
-                  src="./src/assets/plus.svg"
-                  alt="plus"
-                  onClick={() => plus(item.id)}
-                />
+                <p className="minus-plus" onClick={() => plus(item.id)}>
+                  +
+                </p>
               </div>
             </div>
           ))}

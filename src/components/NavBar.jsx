@@ -3,7 +3,9 @@ import { useContext } from "react";
 import { ShopContext } from "../context/shop-context";
 
 function NavBar() {
-  const { car } = useContext(ShopContext);
+  const { totalCar } = useContext(ShopContext);
+
+  const total = totalCar();
 
   return (
     <>
@@ -11,7 +13,7 @@ function NavBar() {
         <p>Future Store</p>
         <Link to="/">Home</Link>
         <Link to="/items">Shop</Link>
-        <Link to="/shopppingCart">Cart: {car}</Link>
+        <Link to="/shopppingCart">Cart: {total}</Link>
       </nav>
     </>
   );
