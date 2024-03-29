@@ -8,6 +8,7 @@ export const ShopContextProvider = (props) => {
   const [carItems, setCarItems] = useState();
   const [car, setCar] = useState(0);
   const [items, setItems] = useState([]);
+  const [amount, setAmount] = useState();
 
   useEffect(() => {
     const getProducts = async () => {
@@ -25,6 +26,7 @@ export const ShopContextProvider = (props) => {
         return cart;
       };
       setCarItems(defaultCart());
+      setAmount(defaultCart());
       setLoading(false);
     };
     getProducts();
@@ -43,27 +45,45 @@ export const ShopContextProvider = (props) => {
     setCarItems((prev) => ({ ...prev, [id]: newValue }));
   }
 
+  function minusCart(id) {
+    if (amount[id] <= 0) return;
+    setAmount((prev) => ({ ...prev, [id]: prev[id] - 1 }));
+  }
+
+  function plusCart(id) {
+    setAmount((prev) => ({ ...prev, [id]: prev[id] + 1 }));
+  }
+
+  function handleInputCart(newValue, id) {
+    setAmount((prev) => ({ ...prev, [id]: newValue }));
+  }
+
   function addToCar(item) {
     setCar(car + carItems[item.id]);
-    if (carItems[item.id] > 0) {
+    setAmount((prev) => ({
+      ...prev,
+      [item.id]: prev[item.id] + carItems[item.id],
+    }));
+    if (carItems[item.id] > 0 && !items.includes(item)) {
       setItems((items) => [...items, item]);
     }
   }
 
   function removeFromCar(item) {
-    setCar(car - carItems[item.id]);
+    setCar(car - amount[item.id]);
     setItems(items.filter((i) => i.id !== item.id));
+    setAmount((prev) => ({ ...prev, [item.id]: 0 }));
   }
 
   function total() {
     let total = 0;
-    for (const item in carItems) {
-      if (carItems[item] > 0) {
-        let itemInfo = data.find((prodcut) => prodcut.id === Number(item));
-        total += carItems[item] * itemInfo.price;
+    for (const item in amount) {
+      if (amount[item] > 0) {
+        let itemInfo = data.find((product) => product.id === Number(item));
+        total += amount[item] * itemInfo.price;
       }
     }
-    return total;
+    return total.toFixed(2);
   }
 
   const contextValue = {
@@ -72,12 +92,16 @@ export const ShopContextProvider = (props) => {
     carItems,
     car,
     items,
+    amount,
     minus,
     plus,
     handleInput,
     addToCar,
     removeFromCar,
     total,
+    minusCart,
+    plusCart,
+    handleInputCart,
   };
 
   return (

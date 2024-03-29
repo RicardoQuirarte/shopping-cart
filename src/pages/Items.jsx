@@ -13,10 +13,9 @@ function Items() {
         <div className="items">
           {data.map((item) => (
             <div className="card" key={item.id}>
-              <p className="title">{item.title}</p>
+              <p>{item.title}</p>
               <img src={item.image} alt={item.title} />
               <p>Price: {`$${item.price}`}</p>
-              <p className="description">{item.description}</p>
               <button onClick={() => addToCar(item)}>Add to car</button>
               <div className="add-to-car">
                 <img

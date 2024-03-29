@@ -2,8 +2,15 @@ import { useContext, useState } from "react";
 import { ShopContext } from "../context/shop-context";
 
 function ShoppingCart() {
-  const { items, carItems, minus, plus, removeFromCar, handleInput, total } =
-    useContext(ShopContext);
+  const {
+    items,
+    amount,
+    removeFromCar,
+    total,
+    plusCart,
+    minusCart,
+    handleInputCart,
+  } = useContext(ShopContext);
 
   const carTotal = total();
 
@@ -14,7 +21,7 @@ function ShoppingCart() {
       ) : (
         <div className="items">
           {items.map((item) => (
-            <div className="card" key={item.id}>
+            <div className="card-cart" key={item.id}>
               <img src={item.image} alt={item.title} />
               <p>Price: {`$${item.price}`}</p>
               <button onClick={() => removeFromCar(item)}>Remove</button>
@@ -23,19 +30,21 @@ function ShoppingCart() {
                   className="minus-plus"
                   src="./src/assets/minus.svg"
                   alt="minus"
-                  onClick={() => minus(item.id)}
+                  onClick={() => minusCart(item.id)}
                 />
                 <input
                   type="text"
                   id="amount"
-                  value={carItems[item.id]}
-                  onChange={(e) => handleInput(Number(e.target.value), item.id)}
+                  value={amount[item.id]}
+                  onChange={(e) =>
+                    handleInputCart(Number(e.target.value), item.id)
+                  }
                 />
                 <img
                   className="minus-plus"
                   src="./src/assets/plus.svg"
                   alt="plus"
-                  onClick={() => plus(item.id)}
+                  onClick={() => plusCart(item.id)}
                 />
               </div>
             </div>
