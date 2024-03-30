@@ -1,18 +1,18 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { ShopContext } from "../context/shop-context";
 
-function ShoppingCart() {
+function Cart() {
   const {
     items,
-    amount,
+    amountCart,
     removeFromCar,
-    total,
+    totalPrice,
     plusCart,
     minusCart,
     handleInputCart,
   } = useContext(ShopContext);
 
-  const carTotal = total();
+  const total = totalPrice();
 
   return (
     <div className="cart">
@@ -31,8 +31,7 @@ function ShoppingCart() {
                 </p>
                 <input
                   type="text"
-                  id="amount"
-                  value={amount[item.id]}
+                  value={amountCart[item.id]}
                   onChange={(e) =>
                     handleInputCart(Number(e.target.value), item.id)
                   }
@@ -45,8 +44,8 @@ function ShoppingCart() {
           ))}
         </div>
       )}
-      <div className="total">Total: {carTotal}</div>
+      <div className="total">Total: {total}</div>
     </div>
   );
 }
-export default ShoppingCart;
+export default Cart;

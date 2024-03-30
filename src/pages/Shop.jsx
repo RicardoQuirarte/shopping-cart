@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { ShopContext } from "../context/shop-context";
 
-function Items() {
-  const { data, loading, minus, plus, handleInput, addToCar, carItems } =
+function Shop() {
+  const { data, loading, minus, plus, handleInput, addToCar, amountShop } =
     useContext(ShopContext);
 
   return (
@@ -23,7 +23,7 @@ function Items() {
                 </p>
                 <input
                   type="text"
-                  value={carItems[item.id]}
+                  value={amountShop[item.id]}
                   onChange={(e) => handleInput(Number(e.target.value), item.id)}
                 />
                 <p className="minus-plus" onClick={() => plus(item.id)}>
@@ -38,4 +38,4 @@ function Items() {
   );
 }
 
-export default Items;
+export default Shop;

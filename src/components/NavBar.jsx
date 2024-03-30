@@ -12,8 +12,8 @@ function NavBar() {
       <nav>
         <p>Future Store</p>
         <Link to="/">Home</Link>
-        <Link to="/items">Shop</Link>
-        <Link to="/shopppingCart">Cart: {total}</Link>
+        <Link to="/shop">Shop</Link>
+        <Link to="/cart">Cart: {total}</Link>
       </nav>
     </>
   );
