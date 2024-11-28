@@ -1,8 +1,12 @@
-# React + Vite
+# Shopping Cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This fake store website consists of three main sections: home, shop and cart.
 
-Currently, two official plugins are available:
+## Built With:
+- React
+- Vite
+- React Router
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### Live: https://rich-shopping-cart.netlify.app/
+
+![Captura de pantalla 2024-11-27 a la(s) 10 55 27 p m](https://github.com/user-attachments/assets/b875b333-b331-4f75-89bf-91f420972a64)
